@@ -230,6 +230,7 @@ type ConfigNameGlobal =
   | 'redirects'
   | 'trailingSlash'
   | 'disableUrlNormalization'
+  | 'middleware'
 const configDefinitionsBuiltInGlobal: Record<ConfigNameGlobal, ConfigDefinitionInternal> = {
   onPrerenderStart: {
     env: { server: true, production: true },
@@ -248,7 +249,8 @@ const configDefinitionsBuiltInGlobal: Record<ConfigNameGlobal, ConfigDefinitionI
   baseServer: { env: { config: true } },
   redirects: { env: { server: true } },
   trailingSlash: { env: { server: true } },
-  disableUrlNormalization: { env: { server: true } }
+  disableUrlNormalization: { env: { server: true } },
+  middleware: { env: { server: true }, cumulative: true, eager: true }
 }
 
 function getConfigEnv(configValueSources: ConfigValueSources, configName: string): null | ConfigEnvInternal {
